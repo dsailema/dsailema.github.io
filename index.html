@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Damaris Sailema | Ingeniería de Software</title>
+  <meta name="description" content="Portafolio de Damaris Sailema, estudiante de Ingeniería de Software en la Universidad Técnica de Ambato. Desarrollo web y datos.">
+  <style>
+    :root {
+      --negro: #0d0606;
+      --negro-2: #150a0a;
+      --superficie: #1b0e0e;
+      --vino: #722f37;
+      --vino-oscuro: #5b0f1f;
+      --cafe: #8b5e3c;
+      --cafe-oscuro: #4a2c1a;
+      --texto: #f1e6dc;
+      --suave: #c9a98f;
+      --linea: #3a2220;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+    body {
+      background: var(--negro);
+      color: var(--texto);
+      font-family: "Segoe UI", system-ui, -apple-system, Helvetica, Arial, sans-serif;
+      line-height: 1.65;
+      font-size: 17px;
+    }
+
+    a { color: inherit; }
+    .wrap { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+    /* Navegación */
+    header.nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(13, 6, 6, 0.92);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--linea);
+    }
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 62px; }
+    .brand { font-family: Georgia, "Times New Roman", serif; font-weight: bold; font-size: 1.15rem; text-decoration: none; letter-spacing: 0.3px; }
+    .nav ul { display: flex; gap: 26px; list-style: none; }
+    .nav ul a { text-decoration: none; color: var(--suave); font-size: 0.95rem; transition: color .2s; }
+    .nav ul a:hover, .nav ul a:focus-visible { color: #fff; }
+
+    /* Portada */
+    .hero {
+      background: linear-gradient(135deg, #120707 0%, var(--vino-oscuro) 55%, var(--cafe-oscuro) 100%);
+      border-bottom: 6px solid #2b1810;
+    }
+    .hero .wrap { padding-top: 96px; padding-bottom: 96px; }
+    .hero .barra { width: 6px; height: 96px; background: var(--cafe); float: left; margin-right: 24px; margin-top: 6px; }
+    .hero h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.2rem, 6vw, 3.8rem); line-height: 1.1; margin-bottom: 10px; }
+    .hero .rol { font-size: 1.3rem; color: #e6d3c3; }
+    .hero .uni { margin-top: 6px; color: var(--suave); letter-spacing: 1.5px; text-transform: uppercase; font-size: 0.9rem; }
+    .hero .botones { clear: both; padding-top: 38px; display: flex; flex-wrap: wrap; gap: 14px; }
+
+    .btn {
+      display: inline-block; padding: 12px 24px; border-radius: 6px;
+      text-decoration: none; font-weight: 600; font-size: 0.97rem;
+      border: 1px solid var(--cafe); transition: background .2s, color .2s, border-color .2s;
+    }
+    .btn.principal { background: var(--vino); border-color: var(--vino); color: #fff; }
+    .btn.principal:hover, .btn.principal:focus-visible { background: #8a3a44; border-color: #8a3a44; }
+    .btn.secundario { color: var(--texto); }
+    .btn.secundario:hover, .btn.secundario:focus-visible { background: rgba(139, 94, 60, 0.25); }
+
+    /* Secciones */
+    section { padding: 76px 0; border-bottom: 1px solid var(--linea); }
+    section:nth-of-type(even) { background: var(--negro-2); }
+    h2 { font-family: Georgia, "Times New Roman", serif; font-size: 2rem; margin-bottom: 8px; }
+    h2::after { content: ""; display: block; width: 56px; height: 4px; background: var(--vino); margin-top: 12px; margin-bottom: 30px; }
+    p + p { margin-top: 14px; }
+    .suave { color: var(--suave); }
+
+    /* Tecnologías */
+    .chips { display: flex; flex-wrap: wrap; gap: 12px; list-style: none; }
+    .chips li {
+      padding: 9px 18px; border-radius: 4px; font-weight: 600; font-size: 0.93rem;
+      background: var(--superficie); border: 1px solid var(--linea); border-left: 4px solid var(--vino);
+    }
+    .chips li:nth-child(3n+2) { border-left-color: var(--cafe); }
+    .chips li:nth-child(3n) { border-left-color: #f1e6dc33; }
+
+    /* Proyectos */
+    .proyecto {
+      background: var(--superficie);
+      border: 1px solid var(--linea);
+      border-left: 6px solid var(--vino);
+      border-radius: 8px;
+      padding: 32px;
+    }
+    .proyecto + .proyecto { margin-top: 28px; border-left-color: var(--cafe); }
+    .proyecto h3 { font-family: Georgia, "Times New Roman", serif; font-size: 1.45rem; margin-bottom: 14px; line-height: 1.3; }
+    .proyecto h3 a { text-decoration: none; border-bottom: 2px solid var(--vino); }
+    .proyecto h3 a:hover, .proyecto h3 a:focus-visible { border-bottom-color: var(--cafe); }
+    .proyecto h4 { font-size: 0.82rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--suave); margin: 22px 0 8px; }
+    .proyecto ul { padding-left: 22px; }
+    .proyecto li { margin-bottom: 6px; }
+    .proyecto li::marker { color: var(--cafe); }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding-left: 0 !important; margin-top: 4px; }
+    .tags li { margin: 0; padding: 4px 12px; font-size: 0.85rem; border-radius: 99px; background: var(--vino-oscuro); color: #f1e6dc; }
+
+    /* Ahora */
+    .lista { list-style: none; }
+    .lista li { padding: 14px 0 14px 22px; border-bottom: 1px solid var(--linea); position: relative; }
+    .lista li::before { content: ""; position: absolute; left: 0; top: 24px; width: 8px; height: 8px; background: var(--cafe); }
+
+    /* Inglés y contacto */
+    .ingles { background: var(--superficie); border: 1px solid var(--linea); border-radius: 8px; padding: 24px 28px; margin-top: 28px; }
+    .ingles h3 { font-family: Georgia, "Times New Roman", serif; margin-bottom: 8px; }
+    .contacto .correo { font-size: 1.25rem; font-weight: 600; word-break: break-all; }
+    .contacto .botones { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 14px; }
+
+    footer { padding: 34px 0; text-align: center; color: var(--suave); font-size: 0.9rem; }
+
+    :focus-visible { outline: 2px solid var(--cafe); outline-offset: 3px; }
+
+    @media (max-width: 640px) {
+      body { font-size: 16px; }
+      .nav ul { gap: 16px; }
+      .nav ul a { font-size: 0.85rem; }
+      .hero .wrap { padding-top: 64px; padding-bottom: 64px; }
+      .hero .barra { height: 70px; margin-right: 16px; }
+      section { padding: 56px 0; }
+      .proyecto { padding: 22px; }
+    }
+    @media (max-width: 480px) {
+      .nav ul li:nth-child(1) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="#inicio">Damaris Sailema</a>
+      <nav aria-label="Principal">
+        <ul>
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#tecnologias">Tecnologías</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inicio">
+
+    <div class="hero">
+      <div class="wrap">
+        <div class="barra" aria-hidden="true"></div>
+        <h1>Damaris Sailema</h1>
+        <p class="rol">Estudiante de Ingeniería de Software</p>
+        <p class="uni">Universidad Técnica de Ambato</p>
+        <div class="botones">
+          <a class="btn principal" href="#proyectos">Ver proyectos</a>
+          <a class="btn secundario" href="https://github.com/Sasha25063" target="_blank" rel="noopener">Perfil de GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <section id="sobre-mi">
+      <div class="wrap">
+        <h2>Sobre mí</h2>
+        <p>Estudio Ingeniería de Software en la Universidad Técnica de Ambato y me enfoco en el desarrollo web, con interés creciente en el manejo y análisis de datos. Me gusta entender cómo funcionan las cosas por dentro, documentar lo que hago y mejorar cada proyecto paso a paso.</p>
+        <p>Trabajo en equipo con metodologías ágiles, control de versiones con Git y revisión de código mediante pull requests.</p>
+        <p class="suave">Idiomas: español (nativo) e inglés (B1).</p>
+      </div>
+    </section>
+
+    <section id="tecnologias">
+      <div class="wrap">
+        <h2>Tecnologías</h2>
+        <ul class="chips">
+          <li>Java</li>
+          <li>PHP</li>
+          <li>JavaScript</li>
+          <li>C# / .NET</li>
+          <li>Angular</li>
+          <li>React</li>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>SQL</li>
+          <li>PostgreSQL</li>
+          <li>SQL Server</li>
+          <li>Git</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="proyectos">
+      <div class="wrap">
+        <h2>Proyectos destacados</h2>
+
+        <article class="proyecto">
+          <h3><a href="https://github.com/JuanFull1/EcuaRutas" target="_blank" rel="noopener">EcuaRutas</a></h3>
+          <p>Sistema web para la gestión del transporte interprovincial de pasajeros en Ecuador. Conecta en una sola plataforma a las cooperativas de buses, sus oficinistas y los clientes: las cooperativas administran flota, rutas y frecuencias; los oficinistas venden boletos en ventanilla; y los clientes consultan disponibilidad y pagan en línea.</p>
+
+          <h4>Tecnologías</h4>
+          <ul class="tags">
+            <li>Angular</li><li>Bootstrap 5</li><li>C# .NET 10</li><li>PostgreSQL</li><li>JWT y roles</li>
+          </ul>
+
+          <h4>Forma de trabajo</h4>
+          <p>Equipo de 6 personas con GitFlow, Jira, Conventional Commits y pull requests hacia <code>develop</code> con 2 aprobaciones.</p>
+
+          <h4>Mi aporte: módulo de flota</h4>
+          <ul>
+            <li>API de buses, grupos de buses y plantillas de asientos: registrar, consultar, editar y dar de baja buses, con validaciones y errores claros (400, 404, 409).</li>
+            <li>Frontend de flota: lista de buses con filtro por estado y formulario de creación, con validaciones y mensajes de error en español.</li>
+            <li>Seguridad: detecté que los controladores de flota estaban abiertos sin sesión y los protegí por rol, verificando los códigos 401, 403 y 200 con pruebas reales.</li>
+            <li>Revisión de código: probé y revisé pull requests de mis compañeros contra la API.</li>
+            <li>Documentación: guía de control de cambios con GitHub Issues para el informe del proyecto.</li>
+          </ul>
+        </article>
+
+        <article class="proyecto">
+          <h3><a href="https://github.com/David22x/HomologacionesFISEI" target="_blank" rel="noopener">Sistema Automatizado para la Homologación de Materias y Créditos (FISEI - UTA)</a></h3>
+          <p>Sistema que permite a un profesor designado gestionar la homologación de materias y créditos de estudiantes, internos o externos, hacia una carrera y malla de destino. El administrador mantiene el catálogo académico (carreras, mallas, asignaturas, temas y subtemas) y el historial de un estudiante externo se importa desde una plantilla de Excel.</p>
+
+          <h4>Arquitectura y tecnologías</h4>
+          <ul class="tags">
+            <li>Microservicios .NET 8</li><li>SQL Server</li><li>API Gateway (Ocelot)</li><li>React</li>
+          </ul>
+          <p style="margin-top:12px">Servicios: Auth, Academic, Students, Documents y Homologation, cada uno con su propia base de datos y una entrada única a través del Gateway.</p>
+
+          <h4>Forma de trabajo</h4>
+          <p>Scrum, Jira, GitHub e integración continua. Cada tarea se desarrolla en una rama propia, con commits convencionales, pruebas manuales documentadas y pull request hacia <code>develop</code>.</p>
+
+          <h4>Mi aporte: Sprint 2</h4>
+          <ul>
+            <li>Estado de la malla: una malla puede estar en borrador o publicada, y la base de datos garantiza una sola publicada por carrera.</li>
+            <li>Temas y subtemas: modelo de datos y un script que genera la carga inicial a partir de los planes analíticos en PDF (80 asignaturas y 619 temas).</li>
+            <li>Students Service: servicio y base de datos con estudiante, historial académico y asignaturas cursadas, incluyendo cédula o pasaporte y horas por asignatura.</li>
+            <li>Plantilla de importación: plantilla de Excel con las hojas Estudiante, Asignaturas y Contenidos, y su contrato de validación.</li>
+            <li>Homologation Service: servicio y base de datos con el expediente, sus estados, el profesor responsable, la regla de un expediente activo por estudiante y carrera, la homologación compuesta y la ruta en el Gateway.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="ahora">
+      <div class="wrap">
+        <h2>En qué estoy trabajando ahora</h2>
+        <ul class="lista">
+          <li>Arquitectura de microservicios con .NET y API Gateway.</li>
+          <li>Modelado de bases de datos y consultas con SQL.</li>
+          <li>Mejorar mi inglés técnico leyendo documentación.</li>
+        </ul>
+
+        <div class="ingles" lang="en">
+          <h3>English summary</h3>
+          <p>I am a Software Engineering student at Universidad Técnica de Ambato, Ecuador. I am interested in web development and working with data. I work with Java, PHP, JavaScript, .NET, Angular, React, SQL, PostgreSQL, HTML and CSS. I work in teams using Git, code reviews and agile methods. I am improving my English (B1 level) and I am open to learning and collaborating on projects.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="contacto">
+      <div class="wrap">
+        <h2>Contacto</h2>
+        <p>Si quieres escribirme sobre un proyecto, una práctica o una colaboración, este es el medio más directo.</p>
+        <p class="correo"><a href="mailto:sailemadamaris72@gmail.com">sailemadamaris72@gmail.com</a></p>
+        <div class="botones">
+          <a class="btn principal" href="mailto:sailemadamaris72@gmail.com">Enviar correo</a>
+          <a class="btn secundario" href="https://github.com/Sasha25063" target="_blank" rel="noopener">GitHub: Sasha25063</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">Damaris Sailema &middot; Universidad Técnica de Ambato</div>
+  </footer>
+
+</body>
+</html>
